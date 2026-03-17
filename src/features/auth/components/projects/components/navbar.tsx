@@ -17,7 +17,7 @@ import Image  from "next/image";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import { UserButton } from "@clerk/nextjs";
-import { useProject, useRenameProject } from "@/hooks/use-projects";
+import { useProject, useRenameProject } from "@/features/hooks/use-projects";
 import { useState } from "react";
 import { CloudCheckIcon, LoaderIcon } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
