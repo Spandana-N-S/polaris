@@ -1,11 +1,11 @@
-import { Id } from '../../convex/_generated/dataModel';
+import { Id } from '../../../convex/_generated/dataModel';
 /* eslint -disable react-hooks/purity */
 
 
 import { useAuth } from '@clerk/nextjs';
 import { useQuery, useMutation } from "convex/react";
 
-import { api } from "../../convex/_generated/api";
+import { api } from "../../../convex/_generated/api";
 
 export const useProject = ( projectId: Id<"projects">) => {
     return useQuery(api.projects.getById, { id: projectId });
@@ -47,20 +47,20 @@ export const useCreateProject = () => {
     )
 };
 
-export const useRenameProject = (projectId: Id<"projects">) => {
+export const useRenameProject = () => {
     const { userId } = useAuth();
 
     return useMutation(api.projects.rename).withOptimisticUpdate(
         (localStore, args) => {
             const existingProject = localStore.getQuery(
                 api.projects.getById, 
-                { id: projectId }
+                { id: args.id }
             );
 
             if (existingProject !== undefined && existingProject !== null){
                 localStore.setQuery(
                     api.projects.getById,
-                    { id: projectId },
+                    { id: args.id },
                     {
                         ...existingProject,
                         name:args.name,

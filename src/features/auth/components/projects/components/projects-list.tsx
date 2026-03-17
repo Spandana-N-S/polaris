@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
 import { Doc } from "../../../../../../convex/_generated/dataModel";
 
-import { useProjectsPartial } from "@/hooks/use-projects";
+import { useProjectsPartial } from "@/features/hooks/use-projects";
 
 
 const formatTimestamp = (timestamp: number) => {
