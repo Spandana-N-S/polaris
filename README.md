@@ -2,23 +2,31 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+1. Sign up for [Anthropic API](https://console.anthropic.com/) and get an API key.
+2. Create `.env.local` in root and add:
+   ```
+   ANTHROPIC_API_KEY=your_key_here
+   ```
+   Restart dev server after adding.
+
+### Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Test AI Code Suggestions (Anthropic + CodeWork)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Authenticate (Clerk).
+2. Create a new project.
+3. Create/open a file (e.g., `test.js`).
+4. Type partial code (e.g., `function hello(`) – ghost text appears after cursor.
+5. Press **Tab** to accept suggestion.
+6. Check browser Network tab for `/api/suggestion` calls to Claude 3.5 Haiku.
 
 ## Learn More
 
