@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Darker_Grotesque, IBM_Plex_Mono, Inter } from "next/font/google";
+import { IBM_Plex_Mono, Inter } from "next/font/google";
 
 import { Toaster } from "@/components/ui/sonner";
 import { Providers } from "@/components/providers";
 
+import "allotment/dist/style.css";
 import "./globals.css";
 
 const inter = Inter({
@@ -27,11 +28,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (  
+  return (
       <html lang="en" suppressHydrationWarning>
-        <body className={`${inter.variable} ${plexMono.variable} antialiased`} suppressHydrationWarning>
+        <body
+          className={`${inter.variable} ${plexMono.variable} antialiased`}
+        >
           <Providers>
-             {children}
+            {children}
             <Toaster />
           </Providers>
         </body>
