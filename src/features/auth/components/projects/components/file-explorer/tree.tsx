@@ -4,7 +4,6 @@ import { ChevronRightIcon } from "lucide-react";
 import { FileIcon, FolderIcon } from "@react-symbols/icons/utils";
 
 import { cn } from "@/lib/utils";
-import { useEditor } from "@/features/editor/use-editor";
 
 import {
   useCreateFile,
@@ -12,7 +11,8 @@ import {
   useFolderContents,
   useRenameFile,
   useDeleteFile,
-} from "@/features/hooks/use-files"; 
+} from "@/features/hooks/use-files";
+import { useEditor } from "@/features/editor/use-editor";
 
 import { getItemPadding } from "./constants";
 import { LoadingRow } from "./loading-row";
@@ -34,8 +34,14 @@ export const Tree = ({
   const [isRenaming, setIsRenaming] = useState(false);
   const [creating, setCreating] = useState<"file" | "folder" | null>(null);
 
-  const renameFile = useRenameFile();
-  const deleteFile = useDeleteFile();
+  const renameFile = useRenameFile({
+    projectId,
+    parentId: item.parentId,
+  });
+  const deleteFile = useDeleteFile({
+    projectId,
+    parentId: item.parentId,
+  });
   const createFile = useCreateFile();
   const createFolder = useCreateFolder();
 
@@ -103,7 +109,7 @@ export const Tree = ({
         level={level}
         isActive={isActive}
         onClick={() => openFile(item._id, { pinned: false })}
-        onDoubleClick={() =>  openFile(item._id, { pinned: true })}
+        onDoubleClick={() => openFile(item._id, { pinned: true })}
         onRename={() => setIsRenaming(true)}
         onDelete={() => {
           closeTab(item._id);
