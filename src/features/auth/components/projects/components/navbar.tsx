@@ -40,7 +40,7 @@ export const Navbar = ({
 }) => {
 
     const project = useProject(projectId);
-    const renameProject = useRenameProject(projectId);
+    const renameProject = useRenameProject();
 
     const[isRenaming, setIsRenaming] = useState(false);
     const[name, setName] = useState("");
@@ -85,9 +85,9 @@ export const Navbar = ({
                                     asChild                                
                                 >
                                     <Link href="/">
-                                    <Image 
+                                    <Image
                                         src="/logo.svg"
-                                        alt="Logo"
+                                        alt="Polaris logo"
                                         width={20}
                                         height={20}
                                     />
